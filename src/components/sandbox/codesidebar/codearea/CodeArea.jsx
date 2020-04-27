@@ -14,7 +14,6 @@ const CodeArea = (props) => {
       <textarea
         className={css.codearea}
         cols={52}
-        contentEditable={true}
         id={props.id}
         onChange={changeCode}
         value={props.templateCode}
