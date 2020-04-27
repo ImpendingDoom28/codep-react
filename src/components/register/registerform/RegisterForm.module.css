@@ -1,0 +1,32 @@
+.form_container {
+  width: 33.33vw;
+  margin: 0 auto;
+  position: absolute;
+  background-color: #212121;
+  right: 8vw;
+  z-index: 100;
+  border-radius: 10px;
+  text-align: center;
+  height: 50vh;
+}
+
+.title_wrapper > h2 {
+  margin: 0;
+  font-weight: 500;
+  color: goldenrod;
+}
+.title_wrapper > h5 {
+  margin: 0;
+  font-weight: 500;
+  color: grey;
+}
+
+.title_wrapper {
+  margin: 2vh 0;
+}
+
+.response_message {
+  z-index: 100;
+  position: absolute;
+  transform: translateY(-30vh) translateX(25vw);
+}

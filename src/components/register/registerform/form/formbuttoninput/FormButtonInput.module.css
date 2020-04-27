@@ -1,0 +1,19 @@
+.container > button {
+  width: -webkit-fill-available;
+  font-size: 20px;
+  padding: 5px 0;
+  color: white;
+  background-color: rgb(1, 110, 1);
+  border: 0;
+  letter-spacing: 1.25px;
+}
+
+.container > button:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5) inset;
+  color: rgb(199, 255, 177);
+}
+
+.container {
+  width: inherit;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}

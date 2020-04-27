@@ -1,0 +1,7 @@
+.loader_wrapper {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  background: #212121;
+}

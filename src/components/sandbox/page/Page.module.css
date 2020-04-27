@@ -1,0 +1,10 @@
+.page_wrapper {
+  height: 53.5vh;
+}
+
+.result_page_view {
+  height: inherit;
+  width: 100%;
+  display: block;
+  background-color: white;
+}

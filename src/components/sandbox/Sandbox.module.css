@@ -1,0 +1,35 @@
+.codesidebar {
+  grid-area: c;
+  background-color: #242424;
+  color: plum;
+  border-right-color: black;
+  border-right-style: solid;
+  border-right-width: 1px;
+}
+
+.result {
+  grid-area: r;
+  padding-left: 5%;
+  padding-right: 5%;
+  color: plum;
+  background-color: #242424;
+}
+
+.content_wrapper {
+  grid-template-areas: "s c r";
+  grid-template-columns: 0.6fr 3.2fr 6.2fr;
+  display: grid;
+  border-left-color: black;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-top-color: black;
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+
+.sidebar {
+  grid-area: s;
+  color: ghostwhite;
+  background-color: rgb(31, 31, 31);
+  border-right: 1px black solid;
+}

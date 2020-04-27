@@ -1,0 +1,32 @@
+.page_wrapper {
+  background-image: url("../../assets/login/images/login_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.rectangle_one {
+  z-index: 20;
+  position: absolute;
+  right: 85vw;
+  width: 15vw;
+  height: calc(100vh - 4.3vh);
+  background: linear-gradient(90deg, #212121 0%, #21212180 50%, #21212100 100%);
+}
+
+.rectangle_two {
+  z-index: 20;
+  position: absolute;
+  left: 85vw;
+  width: 15vw;
+  height: calc(100vh - 4.3vh);
+  background: linear-gradient(
+    -90deg,
+    #212121 0%,
+    #21212180 50%,
+    #21212100 100%
+  );
+}

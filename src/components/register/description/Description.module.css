@@ -1,0 +1,39 @@
+.description_container {
+  width: 33.33vw;
+  margin: 0 auto;
+  background-color: ghostwhite;
+  position: absolute;
+  left: 8vw;
+  z-index: 100;
+  border-radius: 10px;
+  background-color: #212121;
+}
+
+.title_wrapper {
+  text-align: center;
+}
+
+.title_wrapper > h2 {
+  font-weight: 500;
+  color: goldenrod;
+  margin: 1vh 0;
+}
+
+.description_wrapper > ul {
+  margin-bottom: 2vh;
+}
+
+.description_wrapper > ul > li {
+  list-style-type: none;
+  color: rgb(230, 230, 230);
+  margin-bottom: 1vh;
+  font-size: 20px;
+}
+
+.description_wrapper ul > li::before {
+  content: "\2022";
+  color: green;
+  display: inline-block;
+  margin-right: 1vw;
+  font-size: 20px;
+}

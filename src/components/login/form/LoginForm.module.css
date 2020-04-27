@@ -1,0 +1,27 @@
+.form_wrapper {
+  background-color: #212121;
+  width: 25vw;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 3vw 2vh 3vw;
+  border-radius: 20px;
+  border: 2px goldenrod solid;
+  text-align: center;
+}
+
+.title_wrapper {
+  padding: 2vh 0;
+}
+
+.title_wrapper > h2 {
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+  color: goldenrod;
+}
+
+.facebook_wrapper {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  text-align: center;
+}

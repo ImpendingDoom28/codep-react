@@ -1,0 +1,22 @@
+.form_wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.password_conditions > h4 {
+  margin: 0;
+  color: goldenrod;
+}
+
+.password_list {
+  padding: 0;
+  list-style-type: none;
+  width: inherit;
+  color: grey;
+  margin: 0;
+}
+.password_list > li > h4 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}

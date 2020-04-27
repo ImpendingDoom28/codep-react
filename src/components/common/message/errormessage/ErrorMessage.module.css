@@ -1,0 +1,12 @@
+.container {
+  background-color: red;
+  max-width: 31.3vw;
+  margin: 0 auto 2vh auto;
+  border: 1px solid ghostwhite;
+  border-radius: 10px;
+  color: ghostwhite;
+}
+
+.message {
+  margin: 0;
+}

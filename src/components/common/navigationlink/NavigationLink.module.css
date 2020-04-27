@@ -1,0 +1,8 @@
+.link {
+  color: goldenrod;
+  text-decoration: none;
+}
+.link:hover {
+  color: plum;
+  text-decoration: underline;
+}

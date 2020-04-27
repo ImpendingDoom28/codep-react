@@ -1,0 +1,40 @@
+.container {
+  background-color: #212121;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-image: url("../../assets/register/images/register_background.jpg");
+  background-size: 70vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-bottom: calc(100vh - 4.3vh) solid #0c0a0a;
+  border-left: 50vw solid transparent;
+  right: 31vw;
+  position: relative;
+  z-index: 20;
+}
+
+.downangle {
+  position: relative;
+  right: 20vw;
+  top: 37.2vh;
+  z-index: 20;
+  width: 0;
+  height: 0;
+  border-top: calc(100vh - 79.5vh) solid #070707;
+  border-right: 10.7vw solid transparent;
+}
+
+.square {
+  width: 50.6vw;
+  height: calc(100vh - 4.3vh);
+  background-color: #0c0707;
+  z-index: 20;
+  position: absolute;
+  left: 49.4vw;
+}

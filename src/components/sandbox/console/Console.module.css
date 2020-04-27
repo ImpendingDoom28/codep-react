@@ -1,0 +1,11 @@
+.wrapper {
+  padding-top: 6vh;
+}
+
+.console {
+  resize: none;
+  width: 100%;
+  height: calc((100vh - 33vh) / 3);
+  color: white;
+  background-color: rgb(19, 19, 19);
+}

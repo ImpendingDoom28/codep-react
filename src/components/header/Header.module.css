@@ -1,0 +1,54 @@
+.left {
+  float: left;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo {
+}
+
+.left > div {
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+  color: white;
+  display: inline;
+}
+
+.right {
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right > div {
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo {
+  width: 30px;
+  height: 30px;
+}
+
+.link {
+  text-decoration: none;
+  color: goldenrod;
+}
+
+.link:hover {
+  color: plum;
+}
+
+.span {
+  margin: 0 1rem;
+}
