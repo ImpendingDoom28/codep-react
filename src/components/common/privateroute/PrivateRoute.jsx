@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import * as tokenService from "../../../js/TokenService";
+import * as tokenService from "../../../js/services/TokenService";
 
 const PrivateRoute = ({ children, ...rest }) => {
   return (

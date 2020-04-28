@@ -9,6 +9,7 @@ import { withRouter, Route, Switch } from "react-router-dom";
 import "./Container.css";
 import PrivateRoute from "../common/privateroute/PrivateRoute";
 import SandboxContainer from "../sandbox/SandboxContainer";
+import Root from "../root/Root";
 
 const Container = (props) => {
   const routesData = [
@@ -31,6 +32,11 @@ const Container = (props) => {
       path: "/confirm",
       isExact: false,
       render: () => <Confirm />,
+    },
+    {
+      path: "/",
+      isExact: true,
+      render: () => <Root />,
     },
   ];
   const privateRoutesData = [

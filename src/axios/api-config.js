@@ -1,5 +1,5 @@
 import * as axios from "axios";
-import * as tokenService from "../js/TokenService";
+import * as tokenService from "../js/services/TokenService";
 
 const api = axios.create({
   timeout: 10000,
