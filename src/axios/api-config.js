@@ -1,9 +1,15 @@
 import * as axios from "axios";
+import * as tokenService from "../js/TokenService";
 
 const api = axios.create({
-  timeout: 500000,
+  timeout: 10000,
   baseURL: "http://localhost:8080/api/1.0",
-  headers: { "Access-Control-Allow-Origin": "*" },
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    Authorization: tokenService.isTokenPresent()
+      ? "" + tokenService.getToken()
+      : "",
+  },
 });
 
 api.interceptors.request.use((request) => {
