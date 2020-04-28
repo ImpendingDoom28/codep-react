@@ -1,5 +1,5 @@
 import React from "react";
-import * as tokenService from "../../../js/TokenService";
+import * as tokenService from "../../../js/services/TokenService";
 
 const PrivateComponent = (props) => {
   return (

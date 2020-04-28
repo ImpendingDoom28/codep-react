@@ -1,8 +1,6 @@
 import React from "react";
 import css from "./Header.module.css";
 import NavigationLink from "../common/navigationlink/NavigationLink";
-import * as tokenService from "../../js/TokenService";
-import PrivateRoute from "../common/privateroute/PrivateRoute";
 import PrivateComponent from "../common/privatecomponent/PrivateComponent";
 
 const Header = (props) => {
