@@ -1,23 +1,32 @@
 import React from "react";
 import css from "./Header.module.css";
-import titlePhoto from "../../assets/gold-colored-letter-p-illustration-png-clip-art.png";
 import NavigationLink from "../common/navigationlink/NavigationLink";
+import * as tokenService from "../../js/TokenService";
+import PrivateRoute from "../common/privateroute/PrivateRoute";
+import PrivateComponent from "../common/privatecomponent/PrivateComponent";
 
 const Header = (props) => {
+  const publicLinks = [
+    <NavigationLink id="/login" to="/login" text="Login" />,
+    <NavigationLink id="/login" to="/register" text="Register" />,
+  ];
   return (
     <nav>
-      <h2 className={css.title}>CodeP</h2>
-      <div className={css.span}>
+      <div className={css.left}>
         <NavigationLink to="/sandbox" text="Sandbox" />
+        <PrivateComponent>
+          <NavigationLink to="/support" text="Support" />
+        </PrivateComponent>
       </div>
-      <div className={css.span}>
-        <NavigationLink to="/support" text="Support" />
+      <div className={css.center}>
+        <h2 className={css.title}>
+          <NavigationLink to="/sandbox" text="Codep" />
+        </h2>
       </div>
-      <div className={css.span}>
-        <NavigationLink to="/login" text="Login" />
-      </div>
-      <div className={css.span}>
-        <NavigationLink to="/register" text="Register" />
+      <div className={css.right}>
+        <PrivateComponent rest={publicLinks}>
+          <NavigationLink to="/profile/" text="Your Profile" />
+        </PrivateComponent>
       </div>
     </nav>
   );
