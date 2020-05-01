@@ -6,19 +6,20 @@ import FacebookContainer from "../facebook/FacebookLoginContainer";
 import NavigationLink from "../../common/navigationlink/NavigationLink";
 import { Redirect } from "react-router-dom";
 import ErrorMessage from "../../common/message/errormessage/ErrorMessage";
+import * as tokenService from "../../../js/services/TokenService";
 
 const LoginForm = (props) => {
   return (
     <>
-      {localStorage.getItem("token") !== null ? (
-        <Redirect to="/profile" />
+      {tokenService.isTokenPresent() ? (
+        <Redirect to={"/profile/" + props.id} />
       ) : (
         <>
-          <div className={css.response_message}>
-            {props.isError === true ? (
+          {props.isError === true ? (
+            <div className={css.response_message}>
               <ErrorMessage error={props.error} />
-            ) : null}
-          </div>
+            </div>
+          ) : null}
           <div className={css.form_wrapper}>
             <div className={css.title_wrapper}>
               <h2>Login</h2>
@@ -39,7 +40,7 @@ const LoginForm = (props) => {
             />
             <FormButtonInput
               sendAction={props.sendLogin}
-              buttonText={"Log in CodeP"}
+              buttonText={"Log in Codep"}
             />
             <div className={css.facebook_wrapper}>
               <FacebookContainer />

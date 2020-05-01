@@ -5,22 +5,33 @@ import {
   setLoginNickname,
   setLoginPassword,
   setLoginError,
+  setUserData,
 } from "../../redux/auth-reducer";
 import api from "../../axios/api-config";
+import * as tokenService from "../../js/services/TokenService";
 
 class LoginContainer extends React.Component {
   sendLogin = () => {
+    debugger;
     api
       .post("/login", {
         nickname: this.props.loginNickname,
         password: this.props.loginPassword,
       })
       .then((response) => {
-        if (response.data.isError) {
-          this.props.setLoginError(response.data.message, true);
+        const { token, isError, message, userData } = response.data;
+        if (isError) {
+          this.props.setLoginError(message, true);
         } else {
+          tokenService.setToken(token);
+          this.props.setUserData(
+            userData.id,
+            userData.nickname,
+            userData.email,
+            userData.role,
+            userData.state
+          );
           this.props.setLoginError(null, false);
-          sessionStorage.setItem("token", response.data.token);
         }
       });
   };
@@ -36,6 +47,7 @@ const mapStateToProps = (state) => {
     loginPassword: state.auth.loginPassword,
     isError: state.auth.isError,
     error: state.auth.error,
+    id: state.auth.id,
   };
 };
 
@@ -43,4 +55,5 @@ export default connect(mapStateToProps, {
   setLoginNickname,
   setLoginPassword,
   setLoginError,
+  setUserData,
 })(LoginContainer);
