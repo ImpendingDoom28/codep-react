@@ -3,30 +3,59 @@ import Profile from "./Profile";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
+import {
+  setIsProfileFetching,
+  setSandboxes,
+  setDescription,
+  setProfileError,
+} from "../../redux/profile-reducer";
+import Loader from "../common/loader/Loader";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
+    this.props.setIsProfileFetching(true);
     let userId = this.props.match.params.userId;
     axios.get("http://localhost:8080/profile/" + userId).then((response) => {
-      this.props.setUserProfile(response.data);
+      const { sandboxes, description, isError, message } = response.data;
+      if (isError) {
+        this.props.setProfileError(message, true);
+      } else {
+        this.props.setIsProfileFetching(false);
+        this.props.setProfileError(null, false);
+        this.props.setSandboxes(sandboxes);
+        this.props.setDescription(description);
+      }
     });
   }
 
   render() {
-    return <Profile {...this.props} profile={this.props.profile} />;
+    return (
+      <>
+        {this.props.isProfileFetching ? (
+          <Loader to={this.props.location.pathname} />
+        ) : (
+          <Profile {...this.props} userInfo={this.props.userInfo} />
+        )}
+      </>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.profilePage.profile,
+    userInfo: state.auth.userData,
+    sandboxes: state.profilePage.sandboxes,
+    isProfileFetching: state.profilePage.isFetching,
   };
 };
 
 //компонента-обёртка над ProfileContainer, которая
-//предоставляет н
+//предоставляет нам доступ к location, history и match
 const WithUrlDataProfileContainer = withRouter(ProfileContainer);
 
 export default connect(mapStateToProps, {
-  setUserProfile,
+  setIsProfileFetching,
+  setSandboxes,
+  setDescription,
+  setProfileError,
 })(WithUrlDataProfileContainer);

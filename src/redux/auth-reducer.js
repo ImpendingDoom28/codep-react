@@ -4,12 +4,14 @@ const SET_USER_DATA = "SET_USER_DATA",
   SET_LOGIN_ERROR = "SET_LOGIN_ERROR";
 
 const initState = {
-  id: null,
-  nickname: null,
-  email: null,
-  role: null,
-  state: null,
-  loginEmail: "",
+  userData: {
+    id: null,
+    nickname: null,
+    email: null,
+    role: null,
+    state: null,
+  },
+  loginNickname: "",
   loginPassword: "",
   isError: null,
   error: null,
@@ -18,21 +20,22 @@ const initState = {
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case SET_USER_DATA: {
+      debugger;
       return {
         ...state,
-        ...action.userData,
+        userData: { ...action.userData },
       };
     }
     case SET_LOGIN_NICKNAME: {
       return {
         ...state,
-        loginEmail: action.nickname,
+        loginNickname: action.nickname,
       };
     }
     case SET_LOGIN_PASSWORD: {
       return {
         ...state,
-        loginPassword: action.loginPassword,
+        loginPassword: action.password,
       };
     }
     case SET_LOGIN_ERROR: {

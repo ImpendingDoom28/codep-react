@@ -4,7 +4,7 @@ import SandboxContainer from "../../components/sandbox/SandboxContainer";
 import Root from "../../components/root/Root";
 import RegisterContainer from "../../components/register/RegisterContainer";
 import LoginContainer from "../../components/login/LoginContainer";
-import Profile from "../../components/profile/Profile";
+import ProfileContainer from "../../components/profile/ProfileContainer";
 import SupportContainer from "../../components/support/SupportContainer";
 import Confirm from "../../components/confirm/Confirm";
 import { Route } from "react-router-dom";
@@ -40,12 +40,12 @@ const privateRoutesData = [
   {
     path: "/profile/:userId",
     isExact: true,
-    render: () => <Profile />,
+    component: <ProfileContainer />,
   },
   {
     path: "/support",
     isExact: true,
-    render: () => <SupportContainer />,
+    component: <SupportContainer />,
   },
 ];
 
@@ -59,7 +59,7 @@ const routesComponents = routesData.map((elem) => (
 ));
 const privateRoutesComponents = privateRoutesData.map((elem) => (
   <PrivateRoute key={elem.path} path={elem.path} exact={elem.isExact}>
-    {elem.render}
+    {elem.component}
   </PrivateRoute>
 ));
 
