@@ -3,5 +3,11 @@
   justify-content: center;
   text-align: center;
   display: flex;
+  flex-direction: column;
   background: #212121;
+}
+
+.loading_text {
+  color: ghostwhite;
+  margin-block-start: 0 !important;
 }
