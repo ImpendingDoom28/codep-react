@@ -1,6 +1,7 @@
 import React from "react";
 import Sandbox from "./Sandbox";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import Loader from "../common/loader/Loader";
 import { setIsFetching } from "../../redux/sandbox-reducer";
 
@@ -11,7 +12,7 @@ class SandboxContainer extends React.Component {
         {this.props.isFetching &&
         this.props.htmlTemplateCode === `` &&
         this.props.cssTemplateCode === `` ? (
-          <Loader />
+          <Loader to={this.props.location.pathname} />
         ) : (
           <Sandbox />
         )}
@@ -28,4 +29,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setIsFetching })(SandboxContainer);
+export default withRouter(
+  connect(mapStateToProps, { setIsFetching })(SandboxContainer)
+);
