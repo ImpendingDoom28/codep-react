@@ -8,18 +8,20 @@ import {
   changeJs,
   setIsFetching,
 } from "../../../redux/sandbox-reducer";
-import * as axios from "axios";
+import api from "../../../axios/api-config";
 
 class CodeSidebarContainer extends React.Component {
   componentDidMount() {
     this.props.setIsFetching(true);
-    axios.get("http://localhost:8080/api/1.0/sandbox").then((response) => {
-      this.props.setIsFetching(false);
-      const { id, name, htmlCode, cssCode, jsCode } = response.data;
-      this.props.changeHtml(htmlCode);
-      this.props.changeCss(cssCode);
-      this.props.changeJs(jsCode);
-    });
+    api()
+      .get("/sandbox")
+      .then((response) => {
+        this.props.setIsFetching(false);
+        const { id, name, htmlCode, cssCode, jsCode } = response.data;
+        this.props.changeHtml(htmlCode);
+        this.props.changeCss(cssCode);
+        this.props.changeJs(jsCode);
+      });
   }
 
   componentDidUpdate() {

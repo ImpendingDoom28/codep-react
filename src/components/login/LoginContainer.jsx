@@ -12,8 +12,7 @@ import * as tokenService from "../../js/services/TokenService";
 
 class LoginContainer extends React.Component {
   sendLogin = () => {
-    debugger;
-    api
+    api()
       .post("/login", {
         nickname: this.props.loginNickname,
         password: this.props.loginPassword,
@@ -47,7 +46,7 @@ const mapStateToProps = (state) => {
     loginPassword: state.auth.loginPassword,
     isError: state.auth.isError,
     error: state.auth.error,
-    id: state.auth.id,
+    id: state.auth.userData.id,
   };
 };
 

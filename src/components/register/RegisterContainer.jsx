@@ -13,7 +13,7 @@ import api from "../../axios/api-config";
 
 class RegisterContainer extends React.Component {
   sendRegister = () => {
-    api
+    api()
       .post("/register", {
         nickname: this.props.nickname,
         password: this.props.password,
@@ -49,6 +49,7 @@ const mapStateToProps = (state) => {
     isError: state.registerPage.isError,
     error: state.registerPage.error,
     successMessage: state.registerPage.successMessage,
+    profileId: state.auth.userData.id,
   };
 };
 

@@ -10,22 +10,25 @@ import {
   setProfileError,
 } from "../../redux/profile-reducer";
 import Loader from "../common/loader/Loader";
+import api from "../../axios/api-config";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
     this.props.setIsProfileFetching(true);
     let userId = this.props.match.params.userId;
-    axios.get("http://localhost:8080/profile/" + userId).then((response) => {
-      const { sandboxes, description, isError, message } = response.data;
-      if (isError) {
-        this.props.setProfileError(message, true);
-      } else {
-        this.props.setIsProfileFetching(false);
-        this.props.setProfileError(null, false);
-        this.props.setSandboxes(sandboxes);
-        this.props.setDescription(description);
-      }
-    });
+    api()
+      .get("/profile/" + userId)
+      .then((response) => {
+        const { sandboxes, description, isError, message } = response.data;
+        if (isError) {
+          this.props.setProfileError(message, true);
+        } else {
+          this.props.setIsProfileFetching(false);
+          this.props.setProfileError(null, false);
+          this.props.setSandboxes(sandboxes);
+          this.props.setDescription(description);
+        }
+      });
   }
 
   render() {
