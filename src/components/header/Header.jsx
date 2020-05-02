@@ -6,7 +6,7 @@ import PrivateComponent from "../common/privatecomponent/PrivateComponent";
 const Header = (props) => {
   const publicLinks = [
     <NavigationLink id="/login" to="/login" text="Login" />,
-    <NavigationLink id="/login" to="/register" text="Register" />,
+    <NavigationLink id="/register" to="/register" text="Register" />,
   ];
   return (
     <nav>
@@ -23,7 +23,10 @@ const Header = (props) => {
       </div>
       <div className={css.right}>
         <PrivateComponent rest={publicLinks}>
-          <NavigationLink to="/profile/" text="Your Profile" />
+          <NavigationLink
+            to={"/profile/" + props.profileId}
+            text="Your Profile"
+          />
         </PrivateComponent>
       </div>
     </nav>
