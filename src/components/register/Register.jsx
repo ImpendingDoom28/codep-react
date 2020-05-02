@@ -2,6 +2,8 @@ import React from "react";
 import css from "./Register.module.css";
 import Description from "./description/Description";
 import RegisterForm from "./registerform/RegisterForm";
+import { Redirect } from "react-router-dom";
+import * as tokenService from "../../js/services/TokenService";
 
 const Register = (props) => {
   const descriptionList = [
@@ -10,13 +12,19 @@ const Register = (props) => {
   ];
   const title = "Sign up now to get:";
   return (
-    <div className={css.container}>
-      {/* <div className={css.downangle}></div>
+    <>
+      {tokenService.isTokenPresent() ? (
+        <Redirect to={"/profile/" + props.profileId} />
+      ) : (
+        <div className={css.container}>
+          {/* <div className={css.downangle}></div>
       <div className={css.triangle}></div> */}
-      <Description title={title} list={descriptionList} />
-      <RegisterForm {...props} />
-      <div className={css.square}></div>
-    </div>
+          <Description title={title} list={descriptionList} />
+          <RegisterForm {...props} />
+          <div className={css.square}></div>
+        </div>
+      )}
+    </>
   );
 };
 
