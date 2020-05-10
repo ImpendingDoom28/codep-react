@@ -4,13 +4,16 @@ import Header from "./Header";
 
 class HeaderContainer extends React.Component {
   render() {
-    return <Header profileId={this.props.profileId} />;
+    return (
+      <Header profileId={this.props.profileId} isAdmin={this.props.isAdmin} />
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     profileId: state.auth.userData.id,
+    isAdmin: state.auth.isAdmin,
   };
 };
 

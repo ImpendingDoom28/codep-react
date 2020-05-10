@@ -27,6 +27,11 @@ const Header = (props) => {
             to={"/profile/" + props.profileId}
             text="Your Profile"
           />
+          {props.isAdmin ? (
+            <NavigationLink to={"/admin"} text={"Admin panel"} />
+          ) : (
+            <></>
+          )}
         </PrivateComponent>
       </div>
     </nav>

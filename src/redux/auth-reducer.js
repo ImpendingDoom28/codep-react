@@ -11,6 +11,7 @@ const initState = {
     role: null,
     state: null,
   },
+  isAdmin: null,
   loginNickname: "",
   loginPassword: "",
   isError: null,
@@ -24,6 +25,7 @@ const authReducer = (state = initState, action) => {
       return {
         ...state,
         userData: { ...action.userData },
+        isAdmin: action.userData.role === "ADMIN" ? true : false,
       };
     }
     case SET_LOGIN_NICKNAME: {
