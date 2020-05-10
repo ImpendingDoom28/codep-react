@@ -7,8 +7,11 @@ import NavigationLink from "../../common/navigationlink/NavigationLink";
 import { Redirect } from "react-router-dom";
 import ErrorMessage from "../../common/message/errormessage/ErrorMessage";
 import * as tokenService from "../../../js/services/TokenService";
+import { useTranslation } from "react-i18next";
 
 const LoginForm = (props) => {
+  const { t } = useTranslation("loginPage");
+
   return (
     <>
       {tokenService.isTokenPresent() ? (
@@ -22,33 +25,30 @@ const LoginForm = (props) => {
           ) : null}
           <div className={css.form_wrapper}>
             <div className={css.title_wrapper}>
-              <h2>Login</h2>
+              <h2>{t("loginTitle")}</h2>
             </div>
             <FormInput
               setInput={props.setLoginNickname}
               type={"text"}
-              placeholder={"Enter your login"}
+              placeholder={t("nicknamePlaceholder")}
               value={props.loginNickname}
               required={true}
             />
             <FormInput
               setInput={props.setLoginPassword}
               type={"password"}
-              placeholder={"Enter you password"}
+              placeholder={t("passwordPlaceholder")}
               value={props.loginPassword}
               required={true}
             />
             <FormButtonInput
               sendAction={props.sendLogin}
-              buttonText={"Log in Codep"}
+              buttonText={t("loginButtonText")}
             />
             <div className={css.facebook_wrapper}>
               <FacebookContainer />
             </div>
-            <NavigationLink
-              to="/register"
-              text="No account? Register right now!"
-            />
+            <NavigationLink to="/register" text={t("noAccountMessage")} />
           </div>
         </>
       )}
