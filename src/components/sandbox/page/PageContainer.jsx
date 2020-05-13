@@ -11,6 +11,7 @@ class PageContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     code: state.sandboxPage.blobUrl,
+    sandboxName: state.sandboxPage.name,
   };
 };
 

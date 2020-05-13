@@ -17,24 +17,24 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    debug: true,
+    debug: false,
     parse: function (data) {
       console.log("DATA", data);
     },
-    ns: ["loginPage", "common"],
+    ns: ["loginPage", "common", "registerPage", "adminPage", "sandboxPage"],
     defaultNs: "common",
     fallbackLng: "en",
     backend: {
+      // allow cross domain requests
       crossDomain: true,
       loadPath: "http://localhost:8080/static/locales/{{lng}}/{{ns}}.json",
       addPath: "http://localhost:8080/static/locales/{{lng}}/{{ns}}",
-      // allow cross domain requests
     },
     detection: {
-      order: ["htmlTag", "localStorage", "cookie"],
-      lookupLocalStorage: "i18nextLng",
+      order: ["querystring", "cookie"],
+      lookupQueryString: "lng",
       lookupCookie: "i18nextLng",
-      caches: ["localStorage", "cookie"],
+      exludeCacheFor: ["cookie"],
     },
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default

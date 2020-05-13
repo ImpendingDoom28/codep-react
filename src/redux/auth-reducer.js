@@ -1,7 +1,8 @@
 const SET_USER_DATA = "SET_USER_DATA",
   SET_LOGIN_NICKNAME = "SET_LOGIN_NICKNAME",
   SET_LOGIN_PASSWORD = "SET_LOGIN_PASSWORD",
-  SET_LOGIN_ERROR = "SET_LOGIN_ERROR";
+  SET_LOGIN_ERROR = "SET_LOGIN_ERROR",
+  SET_IS_VERIFICATION_TOKEN_OKAY = "SET_IS_VERIFICATION_TOKEN_OKAY";
 
 const initState = {
   userData: {
@@ -16,6 +17,7 @@ const initState = {
   loginPassword: "",
   isError: null,
   error: null,
+  isOk: null,
 };
 
 const authReducer = (state = initState, action) => {
@@ -45,6 +47,12 @@ const authReducer = (state = initState, action) => {
         ...state,
         isError: action.isError,
         error: action.error,
+      };
+    }
+    case SET_IS_VERIFICATION_TOKEN_OKAY: {
+      return {
+        ...state,
+        isOk: action.isOk,
       };
     }
     default: {
@@ -77,6 +85,10 @@ export const setLoginNickname = (nickname) => ({
 export const setLoginPassword = (password) => ({
   type: SET_LOGIN_PASSWORD,
   password,
+});
+export const setIsVerificationTokenOk = (isOk) => ({
+  type: SET_IS_VERIFICATION_TOKEN_OKAY,
+  isOk,
 });
 
 export default authReducer;

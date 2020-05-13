@@ -10,6 +10,16 @@ const CodeSidebar = (props) => {
         changeCode={props.changeHtml}
         id={props.htmlInfo.id}
         templateCode={props.htmlInfo.htmlTemplateCode}
+        onKeyUp={props.showAssistant}
+        isSpacebarPressed={props.isSpacebarPressed}
+        inputCharsArray={props.inputCharsArray}
+        newOptionsArray={props.newOptionsArray}
+        setNewOptionsArray={props.setNewOptions}
+        setIsEmpty={props.setIsEmpty}
+        addChar={props.addCharToInputArray}
+        popChar={props.popCharFromInputArray}
+        basicOptionsArray={props.basicOptionsArray}
+        setInputCharsArray={props.setInputCharsArray}
       />
       <CodeArea
         title={props.jsInfo.title}

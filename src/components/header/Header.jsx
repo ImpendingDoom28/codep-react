@@ -2,19 +2,22 @@ import React from "react";
 import css from "./Header.module.css";
 import NavigationLink from "../common/navigationlink/NavigationLink";
 import PrivateComponent from "../common/privatecomponent/PrivateComponent";
+import { useTranslation } from "react-i18next";
 
 const Header = (props) => {
+  const { t } = useTranslation("common");
   const publicLinks = [
-    <NavigationLink id="/login" to="/login" text="Login" />,
-    <NavigationLink id="/register" to="/register" text="Register" />,
+    <NavigationLink id="/login" to="/login" text={t("header.login")} />,
+    <NavigationLink
+      id="/register"
+      to="/register"
+      text={t("header.register")}
+    />,
   ];
   return (
     <nav>
       <div className={css.left}>
-        <NavigationLink to="/sandbox" text="Sandbox" />
-        <PrivateComponent>
-          <NavigationLink to="/support" text="Support" />
-        </PrivateComponent>
+        <NavigationLink to="/sandbox" text={t("header.sandbox")} />
       </div>
       <div className={css.center}>
         <h2 className={css.title}>
@@ -25,10 +28,10 @@ const Header = (props) => {
         <PrivateComponent rest={publicLinks}>
           <NavigationLink
             to={"/profile/" + props.profileId}
-            text="Your Profile"
+            text={t("header.profile")}
           />
           {props.isAdmin ? (
-            <NavigationLink to={"/admin"} text={"Admin panel"} />
+            <NavigationLink to={"/admin"} text={t("header.adminPanel")} />
           ) : (
             <></>
           )}

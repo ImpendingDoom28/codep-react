@@ -4,8 +4,10 @@ import Form from "./form/Form";
 import NavigationLink from "../../common/navigationlink/NavigationLink";
 import ErrorMessage from "../../common/message/errormessage/ErrorMessage";
 import { Redirect } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const RegisterForm = (props) => {
+  const { t } = useTranslation("registerPage");
   return (
     <>
       {props.successMessage !== null ? (
@@ -27,11 +29,11 @@ const RegisterForm = (props) => {
           </div>
           <div className={css.form_container}>
             <div className={css.title_wrapper}>
-              <h2>Register</h2>
-              <h5>Join CodeP</h5>
+              <h2>{t("form.title")}</h2>
+              <h5>{t("form.undertitle")}</h5>
             </div>
             <Form {...props} />
-            <NavigationLink to="/login" text="Already have an account?" />
+            <NavigationLink to="/login" text={t("form.alreadyHaveAccount")} />
           </div>
         </>
       )}

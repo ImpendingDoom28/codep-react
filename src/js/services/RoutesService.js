@@ -9,6 +9,7 @@ import SupportContainer from "../../components/support/SupportContainer";
 import Confirm from "../../components/confirm/Confirm";
 import { Route } from "react-router-dom";
 import AdminPanelContainer from "../../components/adminpanel/AdminPanelContainer";
+import AuthContainer from "../../components/auth/AuthContainer";
 
 const routesData = [
   {
@@ -35,6 +36,11 @@ const routesData = [
     path: "/",
     isExact: true,
     render: () => <Root />,
+  },
+  {
+    path: "/auth",
+    isExact: false,
+    render: () => <AuthContainer />,
   },
 ];
 const privateRoutesData = [

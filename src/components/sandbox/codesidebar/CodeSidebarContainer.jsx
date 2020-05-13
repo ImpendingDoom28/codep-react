@@ -7,21 +7,38 @@ import {
   changeHtml,
   changeJs,
   setIsFetching,
+  setSandboxId,
+  setName,
+  setIsSpacebarPressed,
+  addCharToInputArray,
+  popCharFromInputArray,
+  setNewOptions,
+  setIsEmpty,
+  setInputCharsArray,
 } from "../../../redux/sandbox-reducer";
 import api from "../../../axios/api-config";
 
 class CodeSidebarContainer extends React.Component {
   componentDidMount() {
-    this.props.setIsFetching(true);
-    api()
-      .get("/sandbox")
-      .then((response) => {
-        this.props.setIsFetching(false);
-        const { id, name, htmlCode, cssCode, jsCode } = response.data;
-        this.props.changeHtml(htmlCode);
-        this.props.changeCss(cssCode);
-        this.props.changeJs(jsCode);
-      });
+    if (!this.props.isSandboxLoaded) {
+      this.props.setIsFetching(true);
+      api()
+        .get("/sandbox")
+        .then((response) => {
+          console.log(response.data);
+          if (!response.data.isError) {
+            const { id, name, htmlCode, cssCode, jsCode } = response.data;
+            this.props.changeHtml(htmlCode);
+            this.props.changeCss(cssCode);
+            this.props.changeJs(jsCode);
+            this.props.setSandboxId(id);
+            this.props.setName(name);
+            this.props.setIsFetching(false);
+          }
+        });
+    } else {
+      this.props.setIsFetching(false);
+    }
   }
 
   componentDidUpdate() {
@@ -29,6 +46,10 @@ class CodeSidebarContainer extends React.Component {
       this.changeCode();
     }
   }
+
+  showAssistant = () => {
+    this.props.setIsSpacebarPressed(!this.props.isSpacebarPressed);
+  };
 
   changeCode = () => {
     let blobUrl = this.getGeneratedPageURL({
@@ -65,7 +86,7 @@ class CodeSidebarContainer extends React.Component {
   };
 
   render() {
-    return <CodeSidebar {...this.props} />;
+    return <CodeSidebar showAssistant={this.showAssistant} {...this.props} />;
   }
 }
 
@@ -75,6 +96,14 @@ const mapStateToProps = (state) => {
     jsInfo: state.sandboxPage.jsInfo,
     cssInfo: state.sandboxPage.cssInfo,
     isFetching: state.sandboxPage.isFetching,
+    id: state.sandboxPage.id,
+    name: state.sandboxPage.name,
+    isSandboxLoaded: state.sandboxPage.isSandboxLoaded,
+    isSpacebarPressed: state.sandboxPage.isSpacebarPressed,
+    inputCharsArray: state.sandboxPage.inputCharsArray,
+    newOptionsArray: state.sandboxPage.newOptionsArray,
+    isEmpty: state.sandboxPage.isEmpty,
+    basicOptionsArray: state.sandboxPage.basicOptionsArray,
   };
 };
 
@@ -84,4 +113,12 @@ export default connect(mapStateToProps, {
   changeCss,
   changeJs,
   setIsFetching,
+  setSandboxId,
+  setName,
+  setIsSpacebarPressed,
+  addCharToInputArray,
+  popCharFromInputArray,
+  setNewOptions,
+  setIsEmpty,
+  setInputCharsArray,
 })(CodeSidebarContainer);

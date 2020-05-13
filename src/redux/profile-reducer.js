@@ -1,12 +1,10 @@
-import { act } from "react-dom/test-utils";
-
 const SET_SANDBOXES = "SET_SANDBOXES",
   SET_IS_PROFILE_FETCHING = "SET_IS_PROFILE_FETCHING",
-  SET_DESCRITION = "SET_DESCRIPTION",
+  SET_BIO = "SET_BIO",
   SET_PROFILE_ERROR = "SET_PROFILE_ERROR";
 
 const initState = {
-  description: "",
+  bio: null,
   sandboxes: null,
   isFetching: false,
   isError: false,
@@ -18,7 +16,7 @@ const profileReducer = (state = initState, action) => {
     case SET_SANDBOXES: {
       return {
         ...state,
-        ...action.sandboxes,
+        sandboxes: [...action.sandboxes],
       };
     }
     case SET_IS_PROFILE_FETCHING: {
@@ -27,10 +25,10 @@ const profileReducer = (state = initState, action) => {
         isFetching: action.isFetching,
       };
     }
-    case SET_DESCRITION: {
+    case SET_BIO: {
       return {
         ...state,
-        description: action.description,
+        bio: action.bio,
       };
     }
     case SET_PROFILE_ERROR: {
@@ -50,9 +48,9 @@ export const setSandboxes = (sandboxes) => ({
   type: SET_SANDBOXES,
   sandboxes,
 });
-export const setDescription = (description) => ({
-  type: SET_DESCRITION,
-  description,
+export const setBio = (bio) => ({
+  type: SET_BIO,
+  bio,
 });
 export const setIsProfileFetching = (isFetching) => ({
   type: SET_IS_PROFILE_FETCHING,
